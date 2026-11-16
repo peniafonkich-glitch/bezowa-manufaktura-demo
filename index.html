@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bezowa Manufaktura | cukiernia domowa w Krakowie, makieta</title>
+<meta name="description" content="Makieta strony Bezowej Manufaktury z Krakowa: bezy, torty bezowe, ciasta i słodkości na zamówienie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&family=Rozha+One&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --blush:#f5cfd6;
+  --pom:#a3203a;
+  --blue:#363a78;
+  --cream:#fff5e8;
+  --pist:#a8c493;
+  --ink:#3a2030;
+  --gut:clamp(20px,5vw,64px);
+  --hd:'Rozha One','Georgia',serif;
+  --bd:'Nunito Sans','Segoe UI',system-ui,sans-serif;
+  --bg:#f5cfd6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--cream)}
+body{font-family:var(--bd);font-size:17px;line-height:1.6;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pom);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--hd);font-weight:400;line-height:1.02}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gut)}
+
+header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px var(--gut);transition:background .4s,box-shadow .4s}
+header.solid{background:rgba(255,245,232,.94);backdrop-filter:blur(8px);box-shadow:0 2px 14px rgba(58,32,48,.12)}
+.brand{font-family:var(--hd);font-size:25px;text-decoration:none;color:var(--ink);line-height:1.05}
+nav{display:flex;gap:26px}
+nav a{text-decoration:none;font-weight:800;font-size:15px;color:var(--ink)}
+nav a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+@media(max-width:700px){nav a:not(.keep){display:none}.brand{font-size:21px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;background:var(--pom);color:#fff;font-weight:800;font-size:16px;text-decoration:none;border:2.5px solid var(--pom);cursor:pointer;font-family:var(--bd);transition:transform .2s,background .2s,color .2s}
+.btn:hover{background:var(--ink);border-color:var(--ink)}.btn:active{transform:scale(.97)}
+.btn.out{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.out:hover{background:var(--ink);color:var(--cream)}
+
+.track{position:relative;height:420vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg);transition:background .7s ease,color .7s;color:var(--ink)}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);transition:background .7s,opacity .7s}
+.b1{right:-12vw;top:50%;width:min(86vh,70vw);aspect-ratio:1;transform:translateY(-50%);background:rgba(255,245,232,.65)}
+.stage.dark .b1{background:rgba(255,245,232,.08)}
+.b2{left:-10vw;top:-12vh;width:34vh;aspect-ratio:1;background:rgba(163,32,58,.12)}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.chap{position:absolute;left:var(--gut);bottom:clamp(64px,13vh,140px);max-width:min(600px,88vw);opacity:0;transform:translateY(26px);transition:opacity .55s,transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.chap.on{opacity:1;transform:none;pointer-events:auto}
+.chap h1,.chap h2{font-size:clamp(46px,8.6vw,118px);letter-spacing:-.005em}
+.chap p{margin-top:16px;max-width:34ch;font-size:clamp(17px,1.9vw,21px);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.stage.dark .btn.out{color:var(--cream);border-color:var(--cream)}
+.stage.dark .btn.out:hover{background:var(--cream);color:var(--blue)}
+.stage.dark .btn{background:var(--cream);color:var(--blue);border-color:var(--cream)}
+.stage.dark .btn:hover{background:var(--blush);border-color:var(--blush)}
+.dots{position:absolute;right:var(--gut);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:3}
+.dots i{width:12px;height:12px;border-radius:50%;border:2px solid currentColor;transition:background .3s}
+.dots i.on{background:currentColor}
+.load{position:absolute;right:var(--gut);bottom:30px;font-size:13px;font-weight:800;opacity:.7;transition:opacity .5s}
+@media(max-width:700px){.dots{display:none}.chap{bottom:46px}#cv{height:68%}.b1{top:34%}}
+
+.sec{padding:clamp(70px,11vw,140px) 0;position:relative}
+.sec h2{font-size:clamp(40px,6.6vw,86px);color:var(--pom)}
+.sub{margin-top:14px;max-width:46ch;font-weight:600}
+.list{margin-top:44px;display:grid;grid-template-columns:1.3fr 1fr;gap:0}
+.list .big{grid-row:span 2;background:var(--blush);padding:clamp(24px,4vw,48px);border-radius:32px 0 0 32px}
+.list .big h3{font-size:clamp(34px,4.6vw,60px);color:var(--pom)}
+.list .big p{margin-top:12px;max-width:34ch;font-weight:600}
+.list .it{padding:clamp(20px,3vw,34px);border-bottom:2px solid var(--ink)}
+.list .it:nth-child(2){background:var(--pist);border-radius:0 32px 0 0}
+.list .it:nth-child(3){background:var(--blue);color:var(--cream)}
+.list .it:last-child{border-bottom:0;border-radius:0 0 32px 0}
+.list h3{font-size:clamp(26px,3vw,38px)}
+.list .it p{margin-top:6px;font-weight:600}
+.strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.strip span{border:2px solid var(--ink);border-radius:999px;padding:6px 18px;font-weight:800;font-size:15px}
+@media(max-width:760px){.list{grid-template-columns:1fr}.list .big{border-radius:28px 28px 0 0}.list .it:nth-child(2){border-radius:0}.list .it:last-child{border-radius:0 0 28px 28px}}
+
+.how{background:var(--blue);color:var(--cream)}
+.how h2{color:var(--blush)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px;margin-top:40px}
+.steps div{border-top:3px solid var(--blush);padding-top:14px}
+.steps h3{font-size:28px;margin-bottom:6px}
+.steps p{font-weight:600;color:#e7e3f2}
+.n{font-family:var(--hd);font-size:clamp(70px,10vw,120px);line-height:1;color:var(--blush)}
+.proof{display:flex;flex-wrap:wrap;gap:30px 60px;margin-top:40px;align-items:flex-end}
+.proof p{max-width:24ch;font-weight:600}
+.src{font-size:13px;opacity:.75;margin-top:26px}
+
+.ord{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,72px);margin-top:32px;align-items:start}
+.pick{list-style:none;border-top:3px solid var(--ink)}
+.pick li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:14px 0;border-bottom:1.5px solid rgba(58,32,48,.4)}
+.pick b{display:block;font-size:18px}.pick small{font-size:14px;opacity:.75}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:46px;height:46px;border-radius:50%;border:2.5px solid var(--ink);background:transparent;font-size:24px;font-weight:800;cursor:pointer;line-height:1;color:var(--ink)}
+.qty button:hover{background:var(--blush)}.qty button:active{transform:scale(.94)}
+.qty output{min-width:28px;text-align:center;font-family:var(--hd);font-size:28px}
+.card{background:var(--blush);border-radius:28px;padding:clamp(20px,3vw,34px)}
+.card label{display:block;font-weight:800;font-size:14px;margin-bottom:5px}
+.card input,.card select{width:100%;font:inherit;font-size:16px;padding:12px 14px;min-height:48px;border:2.5px solid var(--ink);border-radius:14px;background:#fff;color:var(--ink)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.card .empty{font-weight:800;margin-bottom:12px}
+.acts{display:flex;flex-wrap:wrap;gap:10px}.acts .btn{flex:1 1 140px}
+.msg{min-height:22px;font-size:14px;font-weight:800;margin-top:10px}
+@media(max-width:860px){.ord{grid-template-columns:1fr}}
+@media(max-width:420px){.fr{grid-template-columns:1fr}}
+
+.contact{background:var(--pist)}
+.cgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,5vw,64px);align-items:stretch}
+.contact h2{color:var(--ink)}
+.cinfo p{margin-top:12px;font-size:18px;font-weight:600}
+.cinfo a{font-weight:800;text-underline-offset:4px}
+.map{border-radius:24px;overflow:hidden;min-height:340px;border:3px solid var(--ink);background:#e8e3d0}
+.map iframe{width:100%;height:100%;min-height:340px;border:0}
+.note{font-size:13.5px;max-width:74ch;margin-top:40px;padding-top:18px;border-top:2px solid var(--ink)}
+@media(max-width:820px){.cgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header id="hd">
+  <a class="brand" href="#start">Bezowa<br>Manufaktura</a>
+  <nav aria-label="Menu"><a href="#oferta">Oferta</a><a href="#jak">Jak zamówić</a><a href="#zamow" class="keep">Zamów</a><a href="#kontakt" class="keep">Kontakt</a></nav>
+</header>
+
+<main>
+<section class="track" id="start">
+  <div class="stage" id="stage">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <canvas id="cv" aria-hidden="true"></canvas>
+    <div class="load" id="load">Ładuję model 3D…</div>
+    <div class="chap on" data-i="0">
+      <h1>Bezowa Manufaktura</h1>
+      <p>Cukiernia domowa z Krakowa. Chrupiąca beza, delikatna śmietana, świeże owoce.</p>
+      <div class="cta"><a class="btn" href="#zamow">Zamów swoje ciasto</a><a class="btn out" href="#oferta">Zobacz ofertę</a></div>
+    </div>
+    <div class="chap" data-i="1">
+      <h2>Torty bezowe</h2>
+      <p>Lekkie, chrupiące, pełne owoców. Na urodziny, chrzciny i zwykły czwartek.</p>
+    </div>
+    <div class="chap" data-i="2">
+      <h2>Pieczone dla Ciebie</h2>
+      <p>Działamy wyłącznie na zamówienie, więc wszystko jest świeże.</p>
+      <div class="cta"><a class="btn" href="#zamow">Złóż zamówienie</a></div>
+    </div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="sec" id="oferta">
+  <div class="wrap">
+    <h2>Co pieczemy</h2>
+    <p class="sub">Domowe wypieki z Krakowa. Konkretne smaki i ceny ustalamy przy zamówieniu.</p>
+    <div class="list">
+      <div class="big"><h3>Torty bezowe</h3><p>Chrupiąca beza, lekka bita śmietana i góra świeżych owoców: winogrona, borówki, granat.</p></div>
+      <div class="it"><h3>Bezy</h3><p>Małe i duże, do kawy albo na stół.</p></div>
+      <div class="it"><h3>Ciasta i ciastka</h3><p>Domowe, pieczone na zamówienie.</p></div>
+      <div class="it"><h3>Słodkości</h3><p>Dodatki na przyjęcia i prezenty.</p></div>
+    </div>
+    <div class="strip"><span>bezy</span><span>torty bezowe</span><span>ciasta</span><span>ciastka</span><span>domowe wypieki</span></div>
+  </div>
+</section>
+
+<section class="sec how" id="jak">
+  <div class="wrap">
+    <h2>Jak zamówić</h2>
+    <div class="steps">
+      <div><h3>Wybierasz</h3><p>Co chcesz i na kiedy, na przykład tort bezowy na sobotę dla sześciu osób.</p></div>
+      <div><h3>Wysyłasz</h3><p>Powstaje gotowa wiadomość. Wyślesz ją mailem albo przez WhatsApp.</p></div>
+      <div><h3>Odbierasz</h3><p>Ciasto czeka na ustalony termin pod adresem Al. Jana Pawła II 31.</p></div>
+    </div>
+    <div class="proof">
+      <div><div class="n">96<small style="font-size:.4em">%</small></div><p>gości poleca Bezową Manufakturę (24 opinie)</p></div>
+      <div><div class="n">1,1<small style="font-size:.4em"> tys.</small></div><p>obserwujących na Facebooku</p></div>
+    </div>
+    <p class="src">Dane z facebookowej strony Bezowa Manufaktura.</p>
+  </div>
+</section>
+
+<section class="sec" id="zamow">
+  <div class="wrap">
+    <h2>Zamów na termin</h2>
+    <p class="sub">Wybierz, co chcesz, i na kiedy. Cena zależy od wielkości i owoców, ustalimy ją w rozmowie.</p>
+    <div class="ord">
+      <ul class="pick" id="pick"></ul>
+      <div class="card">
+        <div class="fr">
+          <div><label for="dt">Na kiedy</label><input type="date" id="dt"></div>
+          <div><label for="pp">Ile osób</label><input id="pp" inputmode="numeric" placeholder="np. 8"></div>
+        </div>
+        <div class="fr">
+          <div><label for="nm">Imię</label><input id="nm" autocomplete="given-name" placeholder="np. Ola"></div>
+          <div><label for="nt">Uwaga</label><input id="nt" placeholder="np. bez granatu"></div>
+        </div>
+        <div class="empty" id="empty">Wybierz przynajmniej jedną pozycję.</div>
+        <div class="acts">
+          <a class="btn" id="mail" href="#">Wyślij e-mailem</a>
+          <a class="btn out" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn out" href="tel:+48600268901">Zadzwoń</a>
+          <button type="button" class="btn out" id="copy">Kopiuj</button>
+        </div>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="kontakt">
+  <div class="wrap">
+    <div class="cgrid">
+      <div class="cinfo">
+        <h2>Odbiór w Krakowie</h2>
+        <p style="margin-top:22px"><b>Bezowa Manufaktura</b><br>Al. Jana Pawła II 31<br>31-864 Kraków</p>
+        <p>Telefon i WhatsApp: <a href="tel:+48600268901">600 268 901</a></p>
+        <p>E-mail: <a href="mailto:bezowamanufaktura@gmail.com">bezowamanufaktura@gmail.com</a></p>
+        <p><a href="https://www.facebook.com/CukierniaSlodkieEldorado/" rel="noopener">Bezowa Manufaktura na Facebooku</a></p>
+        <p style="font-size:15px">Działamy wyłącznie na zamówienie.</p>
+      </div>
+      <div class="map"><iframe title="Mapa: Al. Jana Pawła II 31, Kraków" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=19.9841%2C50.0694%2C20.0041%2C50.0794&amp;layer=mapnik&amp;marker=50.0744732%2C19.9941176"></iframe></div>
+    </div>
+    <p class="note">To makieta nowej strony przygotowana na próbę, bez zdjęć cukierni. Tort na ekranie jest wygenerowanym komputerowo modelem 3D, a nie Waszym wypiekiem. W pełnej wersji pojawią się prawdziwe zdjęcia Bezowej Manufaktury, menu i ceny, za zgodą właścicieli. Teksty i dane pochodzą z facebookowej strony cukierni.</p>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var hd=$('hd'),track=document.querySelector('.track'),stage=$('stage'),chaps=document.querySelectorAll('.chap'),dots=document.querySelectorAll('.dots i');
+var BG=['#f5cfd6','#fff5e8','#363a78'],DARK=[false,false,true];
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);var t=id&&$(id);if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(id==='start'?0:30),behavior:'smooth'})}});
+
+var cv=$('cv'),load=$('load'),ok=false,model=null,pivot,R,S,cam;
+try{var t=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&(t.getContext('webgl')||t.getContext('experimental-webgl')))&&window.THREE&&THREE.GLTFLoader}catch(e){}
+if(ok){
+ R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setPixelRatio(Math.min(devicePixelRatio||1,2));R.outputEncoding=THREE.sRGBEncoding;
+ S=new THREE.Scene();cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,8);
+ S.add(new THREE.AmbientLight(0xffffff,.6));
+ var k=new THREE.DirectionalLight(0xfff3e0,1.4);k.position.set(-3,5,5);S.add(k);
+ var r=new THREE.DirectionalLight(0xffd0c0,.9);r.position.set(4,2,-4);S.add(r);
+ var f=new THREE.DirectionalLight(0xdde6ff,.45);f.position.set(4,-2,4);S.add(f);
+ pivot=new THREE.Group();S.add(pivot);
+ new THREE.GLTFLoader().load('cake.glb',function(g){
+  model=g.scene;var b=new THREE.Box3().setFromObject(model),sz=b.getSize(new THREE.Vector3()),c=b.getCenter(new THREE.Vector3());
+  var s=2.9/Math.max(sz.x,sz.y,sz.z);model.scale.setScalar(s);model.position.set(-c.x*s,-c.y*s,-c.z*s);
+  pivot.add(model);load.style.opacity=0;setTimeout(function(){load.style.display='none'},600);draw()
+ },undefined,function(){load.textContent='Nie udało się wczytać modelu 3D.'});
+}else{load.style.display='none'}
+function fit(){if(!ok)return;var w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.position.z=w/h<.8?10:8;cam.updateProjectionMatrix();draw()}
+if(ok){if(window.ResizeObserver)new ResizeObserver(fit).observe(cv);else addEventListener('resize',fit)}
+var mx=0;addEventListener('pointermove',function(e){mx=(e.clientX/innerWidth-.5)*2});
+var still=matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,vis=true,cur=-1;
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(stage);
+function draw(){
+ var rr=track.getBoundingClientRect(),tot=track.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-rr.top/tot));
+ hd.classList.toggle('solid',scrollY>50);
+ var idx=p<.34?0:p<.68?1:2;
+ if(idx!==cur){cur=idx;chaps.forEach(function(x,i){x.classList.toggle('on',i===idx)});dots.forEach(function(x,i){x.classList.toggle('on',i===idx)});stage.style.setProperty('--bg',BG[idx]);stage.classList.toggle('dark',DARK[idx]);stage.style.color=DARK[idx]?'#fff5e8':'#3a2030'}
+ if(!model)return;
+ var w=cv.clientWidth/cv.clientHeight,mob=w<.8;
+ pivot.rotation.y=(still?0:p*Math.PI*2.4)+mx*.25-.4;
+ pivot.rotation.x=.38+Math.sin(p*Math.PI*2)*.07;
+ pivot.scale.setScalar((1+.1*Math.sin(p*Math.PI))*(w<1.3&&!mob?.8:1));
+ pivot.position.x=mob?0:(w<1.3?1.15:2.3)-.3*Math.sin(p*Math.PI);
+ pivot.position.y=mob?1.1:0;
+ R.render(S,cam)}
+function loop(){requestAnimationFrame(loop);if(vis)draw()}
+addEventListener('scroll',function(){hd.classList.toggle('solid',scrollY>50)},{passive:true});
+loop();
+
+var items=[['Tort bezowy','z owocami i bitą śmietaną'],['Bezy','małe lub duże'],['Ciasto','domowe'],['Ciastka','na wagę lub zestaw'],['Słodkości','dodatki i prezenty']];
+var q=items.map(function(){return 0}),ul=$('pick');
+items.forEach(function(it,i){var li=document.createElement('li');li.innerHTML='<div><b>'+it[0]+'</b><small>'+it[1]+'</small></div><div class="qty"><button type="button" aria-label="Mniej: '+it[0]+'">−</button><output>0</output><button type="button" aria-label="Więcej: '+it[0]+'">+</button></div>';
+ var bs=li.querySelectorAll('button'),o=li.querySelector('output');
+ bs[0].onclick=function(){q[i]=Math.max(0,q[i]-1);o.textContent=q[i];calc()};
+ bs[1].onclick=function(){q[i]=Math.min(9,q[i]+1);o.textContent=q[i];calc()};ul.appendChild(li)});
+var dt=$('dt');var d0=new Date();dt.min=d0.toISOString().slice(0,10);
+function fd(s){var p=s.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
+function txt(){var L=['Dzień dobry,','','chciałabym zapytać o zamówienie (proszę o informację o terminie i cenie):'],n=0;
+ L[2]='proszę o wycenę i potwierdzenie terminu zamówienia:';
+ items.forEach(function(it,i){if(q[i]){L.push('• '+it[0]+' × '+q[i]);n+=q[i]}});
+ L.push('');L.push('Na kiedy: '+(dt.value?fd(dt.value):'do ustalenia'));var pp=$('pp').value.trim();if(pp)L.push('Liczba osób: '+pp);
+ var nt=$('nt').value.trim();if(nt)L.push('Uwaga: '+nt);var nm=$('nm').value.trim();L.push('','Pozdrawiam'+(nm?', '+nm:''));return {n:n,s:L.join('\n')}}
+function calc(){var r=txt();$('empty').style.display=r.n?'none':'block';
+ $('mail').href='mailto:bezowamanufaktura@gmail.com?subject='+encodeURIComponent('Zamówienie: Bezowa Manufaktura')+'&body='+encodeURIComponent(r.s);
+ $('wa').href='https://wa.me/48600268901?text='+encodeURIComponent(r.s)}
+['dt','pp','nm','nt'].forEach(function(i){$(i).addEventListener('input',calc)});
+$('copy').addEventListener('click',function(){var m=$('msg'),r=txt();if(!r.n){m.textContent='Najpierw wybierz pozycję.';return}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(r.s).then(function(){m.textContent='Skopiowano. Wklej w wiadomość do cukierni.'},function(){m.textContent='Nie udało się skopiować.'})}else{m.textContent='Nie udało się skopiować.'}});
+['mail','wa'].forEach(function(i){$(i).addEventListener('click',function(e){if(!txt().n){e.preventDefault();$('msg').textContent='Najpierw wybierz pozycję.'}})});
+calc();
+})();
+</script>
+</body>
+</html>
