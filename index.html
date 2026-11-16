@@ -68,10 +68,23 @@ header nav a:hover{text-decoration:underline}
 .two{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start}
 @media(max-width:860px){.two{grid-template-columns:1fr;gap:var(--s4)}.sec{padding:var(--s5) 0}}
 
-/* oferta */
-.items{list-style:none;border-top:1px solid var(--ink)}
-.items li{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2);padding:var(--s2) 0;border-bottom:1px solid var(--line);font-family:var(--hd);font-size:clamp(24px,3vw,32px)}
-.items small{font:400 14px var(--bd);color:var(--ink-2);text-align:right}
+/* oferta: karty ze zdjęciami (miejsca na zdjęcia, dopóki właściciele nie wyślą swoich) */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s3);margin-bottom:var(--s4)}
+.arrows{display:flex;gap:var(--s1)}
+.arrows button{width:48px;height:48px;border:1px solid var(--ink);border-radius:var(--r);background:transparent;font:400 26px var(--bd);color:var(--ink);cursor:pointer;line-height:1}
+.arrows button:hover{background:var(--ink);color:var(--paper)}
+.cards{display:flex;gap:var(--s3);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--s2);scrollbar-width:thin;scrollbar-color:var(--ink-2) transparent}
+.card{flex:0 0 min(264px,76vw);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/5;background:var(--paper-2);position:relative;border-bottom:1px solid var(--line)}
+.card .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .ph .slot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:var(--s2);color:var(--ink-2);font-size:13px}
+.card .ph .slot b{font:400 22px var(--hd);color:var(--ink)}
+.card .bd{padding:var(--s2);display:flex;flex-direction:column;gap:var(--s1);flex:1}
+.card h3{font-size:22px}
+.card p{font-size:15px;color:var(--ink-2);flex:1}
+.card .add{margin-top:var(--s1);min-height:44px;border:1px solid var(--brand);border-radius:var(--r);background:transparent;color:var(--brand);font:700 15px var(--bd);cursor:pointer}
+.card .add:hover{background:var(--brand);color:#fff}
+.card .add.on{background:var(--brand);color:#fff}
 blockquote{margin-top:var(--s4);padding-left:var(--s2);border-left:2px solid var(--brand);max-width:46ch}
 blockquote p{font-size:18px}
 blockquote cite{display:block;margin-top:var(--s1);font-style:normal;font-size:14px;color:var(--ink-2)}
@@ -133,24 +146,19 @@ footer p{max-width:78ch}
 </section>
 
 <section class="sec alt" id="oferta">
-  <div class="wrap two">
-    <div>
-      <h2>Co pieczemy</h2>
-      <p class="small" style="margin-top:var(--s2);max-width:34ch">Domowa cukiernia. Smaki, wielkość i cenę ustalamy przy zamówieniu.</p>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2>Co pieczemy</h2>
+        <p class="small" style="margin-top:var(--s2);max-width:46ch">Domowa cukiernia. Smaki, wielkość i cenę ustalamy przy zamówieniu. Dodaj pozycje do zamówienia przyciskiem na karcie.</p>
+      </div>
+      <div class="arrows"><button type="button" id="prev" aria-label="Poprzednie pozycje">‹</button><button type="button" id="next" aria-label="Następne pozycje">›</button></div>
     </div>
-    <div>
-      <ul class="items">
-        <li>Torty bezowe<small>z owocami i bitą śmietaną</small></li>
-        <li>Bezy</li>
-        <li>Ciasta</li>
-        <li>Ciastka</li>
-        <li>Słodkości</li>
-      </ul>
-      <blockquote>
-        <p>„Chrupiąca, lekka beza, delikatna bita śmietana i góra świeżych owoców: winogrona, borówki i granat.”</p>
-        <cite>Bezowa Manufaktura na Facebooku, 2 listopada</cite>
-      </blockquote>
-    </div>
+    <div class="cards" id="cards" tabindex="0" aria-label="Karty wypieków"></div>
+    <blockquote>
+      <p>„Chrupiąca, lekka beza, delikatna bita śmietana i góra świeżych owoców: winogrona, borówki i granat.”</p>
+      <cite>Bezowa Manufaktura na Facebooku, 2 listopada</cite>
+    </blockquote>
   </div>
 </section>
 
@@ -251,13 +259,24 @@ items.forEach(function(it,i){var li=document.createElement('li');li.innerHTML='<
  var bs=li.querySelectorAll('button'),o=li.querySelector('output');
  bs[0].onclick=function(){q[i]=Math.max(0,q[i]-1);o.textContent=q[i];calc()};
  bs[1].onclick=function(){q[i]=Math.min(9,q[i]+1);o.textContent=q[i];calc()};ul.appendChild(li)});
+/* karty z przyciskiem Dodaj, zdjęcia z folderu photos/ (po zgodzie właścicieli) */
+var slugs=['tort-bezowy','bezy','ciasto','ciastka','slodkosci'],cardDesc=['Chrupiąca beza, bita śmietana i świeże owoce.','Małe i duże, pieczone na zamówienie.','Domowe ciasta na wybrany termin.','Domowe ciastka, na wagę lub w zestawie.','Dodatki na przyjęcie lub na prezent.'],cardsEl=$('cards'),addBtns=[];
+items.forEach(function(it,i){var c=document.createElement('article');c.className='card';
+ c.innerHTML='<div class="ph"><div class="slot"><b>'+it[0]+'</b><span>Tu pojawi się zdjęcie z Waszej cukierni</span></div><img alt="'+it[0]+', Bezowa Manufaktura" src="photos/'+slugs[i]+'.jpg" loading="lazy"></div><div class="bd"><h3>'+it[0]+'</h3><p>'+cardDesc[i]+'</p><button type="button" class="add">Dodaj do zamówienia</button></div>';
+ c.querySelector('img').onerror=function(){this.remove()};
+ var b=c.querySelector('.add');addBtns.push(b);
+ b.onclick=function(){q[i]=Math.min(9,q[i]+1);ul.children[i].querySelector('output').textContent=q[i];calc();$('zamow').scrollIntoView&&0};
+ cardsEl.appendChild(c)});
+$('prev').onclick=function(){cardsEl.scrollBy({left:-284,behavior:'smooth'})};
+$('next').onclick=function(){cardsEl.scrollBy({left:284,behavior:'smooth'})};
+function syncCards(){addBtns.forEach(function(b,i){b.classList.toggle('on',q[i]>0);b.textContent=q[i]>0?'W zamówieniu: '+q[i]+' (dodaj jeszcze)':'Dodaj do zamówienia'})}
 var dt=$('dt');dt.min=new Date().toISOString().slice(0,10);
 function fd(s){var p=s.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
 function txt(){var L=['Dzień dobry,','','proszę o wycenę i potwierdzenie terminu:'],n=0;
  items.forEach(function(it,i){if(q[i]){L.push('• '+it[0]+' × '+q[i]);n+=q[i]}});
  L.push('','Na kiedy: '+(dt.value?fd(dt.value):'do ustalenia'));var pp=$('pp').value.trim();if(pp)L.push('Liczba osób: '+pp);
  var nt=$('nt').value.trim();if(nt)L.push('Uwagi: '+nt);var nm=$('nm').value.trim();L.push('','Pozdrawiam'+(nm?', '+nm:''));return {n:n,s:L.join('\n')}}
-function calc(){var r=txt(),pre=$('pre');
+function calc(){var r=txt(),pre=$('pre');syncCards();
  pre.textContent=r.n?r.s:'Wybierz co najmniej jedną pozycję, a tu pojawi się gotowa wiadomość.';pre.classList.toggle('hint',!r.n);
  $('mail').href='mailto:bezowamanufaktura@gmail.com?subject='+encodeURIComponent('Zamówienie: Bezowa Manufaktura')+'&body='+encodeURIComponent(r.s);
  $('wa').href='https://wa.me/48600268901?text='+encodeURIComponent(r.s)}
